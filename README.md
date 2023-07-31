@@ -138,6 +138,19 @@ return a.toUpperCase();
 //expected result is ABC
 ```
 
+## Repeat a string
+The repeat function repeats a string as many times stated. The function takes in an arguement
+1. the repeat length
+
+```solidity
+//Lower Case
+
+string memory a = "abc";
+return a.repeat(4);
+
+//expected result is abcabcabcabc
+```
+
 ## Slicing a string or creating a substring
 The slice and substring functions from the library returns a new string with the sliced and substring. The slice function returns a new string without the specified start and end indexes, and the substring function returns a new string from the start to the end index. The functions takes in two arguements (besides the string),
 1. The start index,
