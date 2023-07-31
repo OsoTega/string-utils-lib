@@ -22,6 +22,13 @@ contract StringUtilsTest is Test {
         assertEq(ba.length, 3);
     }
 
+    function testSpaceCheck() public {
+        string[] memory ba = sample.exampleStringSpaceCheck();
+        assertEq(ba[0], "abc");
+        assertEq(ba[1], "+");
+        assertEq(ba[2], "cbd");
+    }
+
     function testCanReplaceOneString() public {
         string memory a = sample.exampleStringCheckOne();
         assertEq(a, "abc1cbd/han");

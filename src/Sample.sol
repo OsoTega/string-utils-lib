@@ -14,6 +14,10 @@ contract Sample {
         return string("abc/cbd/han").split("/", 10);
     }
 
+    function exampleStringSpaceCheck() public pure returns (string[] memory) {
+        return string("abc + cbd").split(" ", 10);
+    }
+
     function exampleStringCheckOne() public pure returns (string memory) {
         string memory a = "abc/cbd/han";
         string memory newtext = a.replaceOne("/", "1");

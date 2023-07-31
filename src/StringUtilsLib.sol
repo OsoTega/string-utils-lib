@@ -34,6 +34,7 @@ library StringUtilsLib {
         string memory char,
         uint256 proposedLength
     ) internal pure returns (string[] memory) {
+        text = string.concat(text, char);
         bytes memory nt = bytes(text);
         bytes memory nc = bytes(char);
         string[] memory array = new string[](proposedLength);
@@ -43,7 +44,16 @@ library StringUtilsLib {
         while (i < nt.length) {
             bytes memory findBytes = new bytes(nc.length);
             uint256 count = 0;
-            for (uint256 a = i; a < (i + nc.length); a++) {
+            for (
+                uint256 a = i;
+                a <
+                (
+                    (nc.length > (nt.length - i))
+                        ? (nt.length - i)
+                        : (i + nc.length)
+                );
+                a++
+            ) {
                 findBytes[count] = bytes(text)[a];
                 count++;
             }
@@ -66,9 +76,9 @@ library StringUtilsLib {
                 i += 1;
             }
         }
-        string[] memory n_array = new string[](visiblePoint + 1);
+        string[] memory n_array = new string[](visiblePoint);
 
-        for (uint256 a = 0; a < (visiblePoint + 1); a++) {
+        for (uint256 a = 0; a < (visiblePoint); a++) {
             n_array[a] = array[a];
         }
         array = new string[](0);
