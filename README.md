@@ -11,7 +11,7 @@ All functions are written with simplicity in mind, and should be easy to use and
 # Getting started
 install this library by running this on your terminal
 ```foundry
-forge install OsoTega/string-utils-lib
+forge install OsoTega/string-utils-lib --no-commit
 ```
 
 # Examples
