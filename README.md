@@ -58,7 +58,7 @@ The includes function from the library returns a bool if the string searched for
 
 ```solidity
 string memory a = "abc/cbd/han";
-bool newtext = a.split("/");
+bool newtext = a.includes("/");
 
 //expected result is true
 ```
