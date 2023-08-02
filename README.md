@@ -46,7 +46,7 @@ The length function returns the length of an ASCII string
 
 ```solidity
 string memory a = "abc/cbd/han";
-uint256 memory newtext = a.length();
+uint256 b = a.length();
 
 //expected result is 11
 ```
