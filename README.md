@@ -210,7 +210,7 @@ return a.trimEnd();
 
 //expected result is abcs
 
-//trimEnd
+//trim
 
 string memory a = "abcs ";
 return a.trim();
