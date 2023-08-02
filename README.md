@@ -287,13 +287,25 @@ return a.endsWith("ncb");
 ## Convert a string of numbers to a number
 The parseInt function converts the string of numbers to a uint256 number. The function takes in an arguement and returns a uint256 number.
 
-1. The endsWith string
+1. The string
 
 ```solidity
 string memory a = "123412304502212123";
 return a.parseInt();
 
 //expected result is 123412304502212123 as a uint256
+```
+
+## Convert a number to a string
+The parseString function converts the number to a string. The function takes in an arguement and returns a string.
+
+1. The number
+
+```solidity
+uint256 a = 123412304502212123;
+return StringUtilsLib.parseString(a);
+
+//expected result is 123412304502212123 as a string
 ```
 
 

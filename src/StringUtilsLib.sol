@@ -739,6 +739,75 @@ library StringUtilsLib {
         return number;
     }
 
+    function logBase10(uint256 number) private pure returns (uint256) {
+        uint256 log = 0;
+        while ((10 ** log) < number) {
+            log++;
+        }
+        return log + 1;
+    }
+
+    /*
+     * @dev Changes a uint256 to a string.
+     * @param number The number to change.
+     * @return The string.
+     */
+    function parseString(uint256 number) internal pure returns (string memory) {
+        uint256 subNum = 1;
+        if ((number / subNum) > 9) {
+            subNum *= 10;
+            while ((number / subNum) > 9) {
+                subNum *= 10;
+            }
+        } else if ((number / subNum) < 1) {
+            subNum /= 10;
+            while ((number / subNum) < 1) {
+                subNum /= 10;
+            }
+        }
+        uint256[] memory numbers = new uint256[](10);
+        numbers[0] = 0;
+        numbers[1] = 1;
+        numbers[2] = 2;
+        numbers[3] = 3;
+        numbers[4] = 4;
+        numbers[5] = 5;
+        numbers[6] = 6;
+        numbers[7] = 7;
+        numbers[8] = 8;
+        numbers[9] = 9;
+
+        string[] memory numbersString = new string[](10);
+        numbersString[0] = "0";
+        numbersString[1] = "1";
+        numbersString[2] = "2";
+        numbersString[3] = "3";
+        numbersString[4] = "4";
+        numbersString[5] = "5";
+        numbersString[6] = "6";
+        numbersString[7] = "7";
+        numbersString[8] = "8";
+        numbersString[9] = "9";
+        string memory text = "";
+        uint256 workingNumber = number;
+        uint256 lengthOfNumber = logBase10(subNum);
+        for (uint256 i = 0; i < lengthOfNumber; i++) {
+            uint256 firstNumber = workingNumber / subNum;
+            uint256 remainder = workingNumber % subNum;
+            uint256 checkNum = 0;
+            for (uint256 a = 0; a < numbers.length; a++) {
+                if (numbers[a] == firstNumber) {
+                    checkNum = a;
+                    break;
+                }
+            }
+            text = string.concat(text, numbersString[checkNum]);
+            workingNumber = remainder;
+            subNum /= 10;
+        }
+        return text;
+    }
+
     /*
      * Gets the length of the string.
      * @param text The string to ge length.

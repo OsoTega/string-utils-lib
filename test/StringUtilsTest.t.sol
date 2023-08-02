@@ -127,4 +127,10 @@ contract StringUtilsTest is Test {
         console.log(a);
         assertEq(a, 123412304502212123);
     }
+
+    function testParseAString() public {
+        string memory a = sample.exampleParseAString();
+        console.log(a);
+        assertEq(a, "123412304502212123");
+    }
 }

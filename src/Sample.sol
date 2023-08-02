@@ -118,4 +118,9 @@ contract Sample {
         string memory a = "123412304502212123";
         return a.parseInt();
     }
+
+    function exampleParseAString() public pure returns (string memory) {
+        uint256 a = 123412304502212123;
+        return StringUtilsLib.parseString(a);
+    }
 }
