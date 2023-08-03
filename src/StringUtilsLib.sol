@@ -754,29 +754,19 @@ library StringUtilsLib {
      */
     function parseString(uint256 number) internal pure returns (string memory) {
         uint256 subNum = 1;
-        if ((number / subNum) > 9) {
-            subNum *= 10;
-            while ((number / subNum) > 9) {
+        if (number > 0) {
+            if ((number / subNum) > 9) {
                 subNum *= 10;
-            }
-        } else if ((number / subNum) < 1) {
-            subNum /= 10;
-            while ((number / subNum) < 1) {
+                while ((number / subNum) > 9) {
+                    subNum *= 10;
+                }
+            } else if ((number / subNum) < 1) {
                 subNum /= 10;
+                while ((number / subNum) < 1) {
+                    subNum /= 10;
+                }
             }
         }
-        uint256[] memory numbers = new uint256[](10);
-        numbers[0] = 0;
-        numbers[1] = 1;
-        numbers[2] = 2;
-        numbers[3] = 3;
-        numbers[4] = 4;
-        numbers[5] = 5;
-        numbers[6] = 6;
-        numbers[7] = 7;
-        numbers[8] = 8;
-        numbers[9] = 9;
-
         string[] memory numbersString = new string[](10);
         numbersString[0] = "0";
         numbersString[1] = "1";
@@ -794,14 +784,7 @@ library StringUtilsLib {
         for (uint256 i = 0; i < lengthOfNumber; i++) {
             uint256 firstNumber = workingNumber / subNum;
             uint256 remainder = workingNumber % subNum;
-            uint256 checkNum = 0;
-            for (uint256 a = 0; a < numbers.length; a++) {
-                if (numbers[a] == firstNumber) {
-                    checkNum = a;
-                    break;
-                }
-            }
-            text = string.concat(text, numbersString[checkNum]);
+            text = string.concat(text, numbersString[firstNumber]);
             workingNumber = remainder;
             subNum /= 10;
         }
